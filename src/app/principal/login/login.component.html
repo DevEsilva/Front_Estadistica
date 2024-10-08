@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en" style="height: auto;">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ConectaFast</title>
+</head>
+<app-recovery-acc [showModal]="isModalVisible" (close)="closeModal()">
+    <h3>¿Olvido su Contraseña?</h3>
+    <span>Escribe tu correo y te enviaremos instrucciones para resetear tu contraseña</span>
+    <form #f="ngForm" novalidate (keydown.enter)="$event.preventDefault()">
+        <mat-form-field class="mat-form-field-Recovery">
+            <mat-label><i class="fa-regular fa-envelope"></i> Correo Electronico</mat-label>
+            <input (keydown.enter)="onLogin()" matInput type="text" [(ngModel)]="nombreUsuario" required
+                name="nombreUsuario">
+
+        </mat-form-field>
+
+        <div>
+            <button mat-raised-button class="custom-button">
+                <i class="fa-regular fa-envelope"></i> Enviar
+            </button>
+        </div>
+    </form>
+</app-recovery-acc>
+
+<body>
+    <div *ngIf="isLogged; else loggedOut">
+        <h2>Ya has iniciado sesión {{isLogged}}</h2>
+        <META HTTP-EQUIV="REFRESH" CONTENT="1;URL=home">
+        <div>
+            Redireccionando.....
+        </div>
+    </div>
+
+    <ng-template #loggedOut>
+        <section class="background-gradient">
+            <div [@slideInOut]="isVisible" class="ocultarResponsive">
+                <img src="../assets/salud.jpg" style="height: 400px; width: 800px; border-radius: 5%;"><br />
+                <article style="text-align: center;">Unidad Funcional de Gestión de la Información (UFGI) - OGTI DIRIS Lima Norte</article>
+            </div>
+
+            <div class="container-padre">
+                <div [@slideInOut]="isVisible" class="ocultarLogoFull" style="text-align: center; margin: 0 auto;">
+                    <img src="../assets/salud.jpg" style="max-width: 80%; padding-bottom: 5%;">
+                </div>
+                <mat-card class="card-container">
+
+                    <mat-card-content>
+                        <div style=" flex-direction: row;">
+                            
+                            <div style="flex: 1;">
+
+                                <div class="card-body">
+                                    <div [@fadeInOut]="isFirstDivVisible ? 'visible' : 'hidden'">
+                                        <form #f="ngForm" novalidate (keydown.enter)="$event.preventDefault()"
+                                            (submit)="onLogin()">
+                                            <div
+                                                style="display: flex; align-items: center; justify-content: center;  margin: 2rem;">
+                                                <span class="mat-headline">Inicie Sessión</span>
+                                            </div>
+                                            <mat-form-field class="mat-form-field-login">
+                                                <mat-label><i class="fa-solid fa-user"></i> Nombre de
+                                                    Usuario</mat-label>
+                                                <input (keydown.enter)="onLogin()" matInput type="text"
+                                                    [(ngModel)]="nombreUsuario" required name="nombreUsuario">
+                                                <!--    <button *ngIf="nombreUsuario" matSuffix mat-icon-button aria-label="Clear" (click)="nombreUsuario=''">
+                                                <mat-icon>close</mat-icon>
+                                            </button>-->
+                                            </mat-form-field>
+
+                                            <mat-form-field class="mat-form-field-login">
+                                                <mat-label><i class="fa-solid fa-lock"></i> Contraseña</mat-label>
+                                                <input (keydown.enter)="onLogin()" matInput
+                                                    [type]="hidePassword ? 'password' : 'text'"
+                                                    [(ngModel)]="passwordValue" required name="passwordValue">
+                                                <mat-icon style="margin-right: 20px;" matSuffix
+                                                    (click)="togglePasswordVisibility()">
+                                                    {{ hidePassword ? 'visibility_off' : 'visibility' }}
+                                                </mat-icon>
+                                                <!-- <button *ngIf="passwordValue" matSuffix mat-icon-button aria-label="Clear" (click)="passwordValue=''">
+                                                <mat-icon>close</mat-icon>
+                                            </button>-->
+                                            </mat-form-field>
+                                            <a style=" padding-bottom: 4%; float: right; color: #00C7C4; font-size: 0.75rem; cursor: pointer;"
+                                                (click)="toggleModal()">¿Olvido su Contraseña?</a>
+                                            <div class="contenedor-button">
+                                                <button mat-fab extended class="custom-button" [disabled]="!f.valid">
+                                                    <i class="fa-solid fa-right-to-bracket"></i> Acceder </button>
+                                            </div>
+                                            <mat-divider></mat-divider>
+                                        </form>
+                                    <!--   <div class="contenedor-button2">
+                                            <button mat-fab extended class="custom-button2" (click)="toggleDivs()"> <i
+                                                    class="fa-solid fa-file-signature"> </i>
+                                                Registrate</button>
+                                        </div>
+--> 
+                                    </div>
+                                    
+                                    <div [@fadeInOut]="isSecondDivVisible ? 'visible' : 'hidden'">
+                                        <form #f2="ngForm" novalidate (keydown.enter)="$event.preventDefault()"
+                                            (submit)="onCreate()">
+                                            <div
+                                                style="display: flex; align-items: center; justify-content: center;  margin: 0.70rem;">
+                                                <span class="mat-headline">Registrarse</span>
+                                            </div>
+                                            <mat-form-field class="marginInput">
+                                                <mat-label><i class="fa-solid fa-envelope"></i> Correo
+                                                    electrónico</mat-label>
+                                                <input type="email" [formControl]="emailFormControl"
+                                                    (keydown.enter)="onCreate()" matInput
+                                                    [(ngModel)]="correoElectronico" required name="correoElectronico">
+                                            </mat-form-field>
+
+                                            <mat-form-field class="marginInput">
+                                                <mat-label><i class="fa-solid fa-file-signature"></i> Nombre
+                                                    completo</mat-label>
+                                                <input (keydown.enter)="onCreate()" matInput type="text"
+                                                    [(ngModel)]="nombreCompleto" required name="nombreCompleto">
+                                            </mat-form-field>
+
+                                            <mat-form-field class="marginInput">
+                                                <mat-label><i class="fa-solid fa-user"></i> Usuario</mat-label>
+                                                <input (keydown.enter)="onCreate()" matInput type="text"
+                                                    [(ngModel)]="CnombreUsuario" required name="CnombreUsuario">
+                                            </mat-form-field>
+
+                                            <mat-form-field class="marginInput">
+                                                <mat-label><i class="fa-solid fa-lock"></i> Contraseña</mat-label>
+                                                <input (keydown.enter)="onCreate()" matInput
+                                                    [type]="hidePassword ? 'password' : 'text'"
+                                                    [(ngModel)]="cpasswordValue" required name="cpasswordValue">
+                                                <mat-icon matSuffix (click)="togglePasswordVisibility()">
+                                                    {{ hidePassword ? 'visibility_off' : 'visibility' }}
+                                                </mat-icon>
+                                            </mat-form-field>
+
+                                            <mat-form-field class="marginInput">
+                                                <mat-label><i class="fa-solid fa-lock"></i> Repetir
+                                                    contraseña</mat-label>
+                                                <input (keydown.enter)="onCreate()" matInput
+                                                    [type]="hidePassword ? 'password' : 'text'"
+                                                    [(ngModel)]="rcpasswordValue" required name="rcpasswordValue">
+                                                <mat-icon matSuffix (click)="togglePasswordVisibility()">
+                                                    {{ hidePassword ? 'visibility_off' : 'visibility' }}
+                                                </mat-icon>
+
+                                            </mat-form-field>
+
+                                            <div class="contenedor-button">
+                                                <button mat-fab extended color="primary" [disabled]="!f2.valid"
+                                                    class="custom-button">
+                                                    <i class="fa-solid fa-file-signature"></i> Registrar
+                                                </button>
+                                            </div>
+                                            <mat-divider></mat-divider>
+                                        </form>
+
+                                        <div class="contenedor-button2">
+
+                                            <button mat-fab extended class="custom-button2" color="primary"
+                                                (click)="toggleDivs()"> <i class="fa-solid fa-right-to-bracket"></i>
+                                                Iniciar
+                                                Sessión</button>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div style="flex: 1; display: flex; justify-content: center; align-items: center;">
+                                <img src="../assets/CabeceraDiris.jpg" alt="login form"
+                                    style=" max-width: 90%; height: auto;" />
+                            </div>
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </section>
+    </ng-template>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+.Content {
+    padding:2% 2% 2% 2%;
+    margin: 1% 5% 5% 5%;
+    background-color: white;
+
+}
+
+.table{ 
+    border-color:  transparent transparent var(--primary-color) transparent ; 
+    border-style: solid;
+    border-width: 0.5px;
+    border-radius: 5px;
+}
+
+
+
+.modal-header {
+    background-color:  var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .div-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 16px; 
+    
+  }
+
+
+  .icon-text-container {
+    display: flex;
+    align-items: center;
+    >mat-icon{
+        margin-right: 8px; 
+    }
+  }

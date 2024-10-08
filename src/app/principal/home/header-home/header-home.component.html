@@ -1,0 +1,45 @@
+
+<div class="sidenav-header">
+    <img [width]="profilePicSize()" [height]="profilePicSize()" src={{avatarcito}}>
+    <div class="header-text" [class.hide-header-text]="sideNavCollapsed()">
+        <h2>{{Nombre}}</h2>
+        <p>{{establecimiento}}</p>
+    </div>
+</div>
+
+<mat-nav-list>
+   
+    
+    <a mat-list-item class="menu-item" *ngFor="let item of menuItems()" [routerLink]="item.route"
+        routerLinkActive="selected-menu-item" (click)="onMenuItemClick2()" #rla="routerLinkActive"
+        [activated]="rla.isActive">
+        <mat-icon [fontSet]="rla.isActive ? 'material-icons' : 'material-icons-outlined' "
+            matListItemIcon>{{item.icon}}</mat-icon>
+        <span matListItemTitle *ngIf="!sideNavCollapsed()">{{item.label}}</span>
+    </a>
+
+    <mat-expansion-panel *ngFor="let panel of accessiblePanels; let i = index">
+        <mat-expansion-panel-header  [ngClass]="{'cambio-expansion-indicator': (ico20 === panel.title)}">
+            <mat-panel-title>
+                <a mat-list-item routerLinkActive="selected-menu-item" #rlap="routerLinkActive"
+                    [activated]="cambio(panel.title)">
+                    <mat-icon [fontSet]="cambio(panel.title) ? 'material-icons' : 'material-icons-outlined'" matListItemIcon>
+                        {{ panel.icon }}
+                    </mat-icon>
+                    <span matListItemTitle>{{ panel.title }}</span>
+                </a>
+            </mat-panel-title>
+             
+        </mat-expansion-panel-header>
+        <a mat-list-item class="menu-item" *ngFor="let item of panel.menuItems" [routerLink]="item.route"
+            routerLinkActive="selected-menu-item" #rla="routerLinkActive" [activated]="rla.isActive"
+            (click)="onMenuItemClick(panel.title)">
+            <mat-icon [fontSet]="rla.isActive ? 'material-icons' : 'material-icons-outlined'" matListItemIcon>
+                {{item.icon}}
+            </mat-icon>
+            <span matListItemTitle *ngIf="!sideNavCollapsed()">{{item.label}}</span>
+        </a>
+    </mat-expansion-panel>
+
+
+</mat-nav-list>

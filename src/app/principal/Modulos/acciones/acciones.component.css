@@ -1,0 +1,98 @@
+.Content {
+    padding: 2% 2% 2% 2%;
+    margin: 1% 5% 5% 5%;
+    background-color: white;
+    border: 1px solid var(--primary-color);
+    border-radius: 10px;
+}
+
+.conten-table {
+    max-width: 100%;
+    display: flex;
+    grid-template-columns: 2fr;
+}
+
+.colum-content-rigth {
+    text-align: right;
+    width: 15%;
+    padding-right: 50px;
+}
+
+.colum-content-left {
+    text-align: left;
+    width: 70%;
+    border: none; /* Elimina el borde */
+    outline: none; /* Elimina el contorno al hacer foco */
+}
+
+.colum-content-left:focus {
+    border: none; /* Asegúrate de que el borde siga sin aparecer */
+    outline: none; /* Elimina el contorno al hacer foco */
+    border-bottom: 1px solid var(--primary-color); /* Línea verde al seleccionar */
+
+}
+
+.conten-btn {
+    margin: 3%;
+    max-width: 100%;
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    grid-template-columns: 3fr;
+
+    >button {
+
+        margin: 2%;
+        display: flex; /* Para que el ícono y el texto estén en línea */
+        align-items: center; 
+        >mat-icon {
+            color: white;
+        }
+
+        >span {
+            color: white;
+        }
+    }
+
+    ;
+}
+
+.modal-header {
+    background-color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+
+@media (max-width: 600px) {
+    .conten-btn {
+        max-width: 100%;
+        display: grid;
+
+        >button {
+            margin-top: 5%;
+
+        }
+
+        ;
+
+    }
+
+    .conten-table {
+        width: 100%;
+        display: grid;
+    }
+
+    .colum-content-rigth {
+        text-align: left;
+        width: 50%;
+        padding-right: 0px;
+    }
+
+    .colum-content-left {
+        text-align: right;
+        width: 100%;
+    }
+}

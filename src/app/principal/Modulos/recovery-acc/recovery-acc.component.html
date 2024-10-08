@@ -1,0 +1,8 @@
+<!-- modal.component.html -->
+<div class="modal" *ngIf="showModal">
+    <div class="modal-overlay" (click)="closeModal()"></div>
+    <div class="modal-content">
+      <button class="modal-close" (click)="closeModal()">X</button>
+      <ng-content></ng-content>
+    </div>
+  </div>

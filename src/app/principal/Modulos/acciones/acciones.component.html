@@ -1,0 +1,66 @@
+<div class="modal-header ">
+    <h1 mat-dialog-title><mat-icon fontIcon="settings" style="margin-bottom: -5px;"></mat-icon> Acciones</h1>
+    <button mat-icon-button class="close-button" aria-label="Cerrar" (click)="close()">
+        <mat-icon fontIcon="cancel"></mat-icon>
+    </button>
+
+</div>
+<div class="Content">
+    <div class="conten-table">
+        <span class="colum-content-rigth">Usuario :</span>
+        <span class="colum-content-left">{{usuario}}</span>
+    </div>
+    <div class="conten-table">
+        <span class="colum-content-rigth">Nombre :</span>
+        <input type="text" class="colum-content-left" [(ngModel)]="nombre">
+    </div>
+    <div class="conten-table">
+        <span class="colum-content-rigth">Correo :</span>
+        <input type="text" class="colum-content-left" [(ngModel)]="correo">
+    </div>
+    <div class="conten-table">
+        <span class="colum-content-rigth">Celular :</span>
+        <input type="text" class="colum-content-left" [(ngModel)]="celular">
+    </div>
+    <div class="conten-table">
+        <span class="colum-content-rigth">Rol :</span>
+        <select class="colum-content-left"  [(ngModel)]="rol">
+            <option *ngFor="let option of roles" [value]="option.codigo">{{ option.descripcion }}</option>
+        </select>
+    </div>
+    <div class="conten-table">
+        <span class="colum-content-rigth">Cargo :</span>
+        <select class="colum-content-left" [(ngModel)]="cargo">
+            <option *ngFor="let option of cargos" [value]="this.option.codigo">{{ option.descripcion }}</option>
+        </select>
+    </div>
+    <div class="conten-table">
+        <span class="colum-content-rigth">Sede :</span>
+        <select class="colum-content-left"  [(ngModel)]="establecimiento">
+            <option *ngFor="let option of establecimientos" [value]="option.codigo">{{ option.establecimiento }}
+            </option>
+        </select>
+    </div>
+    <div class="conten-table">
+        <span class="colum-content-rigth">Sexo :</span>
+        <select class="colum-content-left"  [(ngModel)]="sexo">
+            <option *ngFor="let option of sexos" [value]="option.codigo">{{ option.descripcion }}</option>
+        </select>
+    </div>
+    <br>
+    <mat-divider></mat-divider>
+    <div class="conten-btn">
+        <button mat-raised-button color="primary" (click)="actualizar()">
+            <mat-icon>picture_as_pdf</mat-icon><span>Editar</span></button>
+        <button mat-raised-button color="primary">
+            <mat-icon>outgoing_mail</mat-icon><span>CORREO</span></button>
+        <button mat-raised-button color="primary">
+            <mat-icon>history_toggle_off</mat-icon><span>HISTORIAL</span></button>
+    </div>
+
+
+    <mat-divider></mat-divider>
+
+
+
+</div>

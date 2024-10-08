@@ -1,0 +1,157 @@
+<div class="Content">
+    <mat-tab-group class="table">
+        <mat-tab>
+            <ng-template class="modal-header" mat-tab-label>
+                <h3>Información personal</h3>
+            </ng-template>
+            <ng-template matTabContent>
+                <div class="table2">
+                    <div class="Content">
+                        <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+                            <div class="form-container2">
+                                <div class="form-column">
+                                    <mat-form-field>
+                                        <mat-label>Nombre</mat-label>
+                                        <input matInput formControlName="nombre">
+                                    </mat-form-field>
+                                </div>
+                                <div class="form-column">
+                                    <mat-form-field>
+                                        <mat-label>Establecimiento</mat-label>
+                                        <mat-select formControlName="establecimiento">
+                                            <mat-option *ngFor="let establecimiento of establecimientos" [value]="establecimiento.codigo">
+                                                {{ establecimiento.establecimiento }}
+                                              </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                                <div class="form-column">
+                                    <mat-form-field>
+                                        <mat-label>Usuario</mat-label>
+                                        <input matInput formControlName="usuario">
+                                    </mat-form-field>
+                                </div>
+                                <div class="form-column">
+                                    <mat-form-field>
+                                        <mat-label>Correo</mat-label>
+                                        <input matInput formControlName="correo">
+                                    </mat-form-field>
+                                </div>
+                                <div class="form-column">
+                                    <mat-form-field >
+                                        <mat-label>Rol</mat-label>
+                                        <mat-select formControlName="rol" >
+                                            <mat-option [disabled]="isRolDisabled" *ngFor="let rol of roles" [value]="rol.codigo">
+                                                {{ rol.descripcion }}
+                                              </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                                <div class="form-column">
+                                    <mat-form-field>
+                                        <mat-label>Cargo</mat-label>
+                                        <mat-select formControlName="cargo">
+                                            <mat-option [disabled]="isRolDisabled" *ngFor="let cargo of cargos" [value]="cargo.codigo">
+                                                {{ cargo.descripcion }}
+                                              </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                                <div class="form-column">
+                                    <mat-form-field>
+                                        <mat-label>Sexo</mat-label>
+                                        <mat-select formControlName="sexo">
+                                            <mat-option *ngFor="let sexo of sexos" [value]="sexo.codigo">
+                                                {{ sexo.descripcion }}
+                                              </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                                
+                                <div class="form-column">
+                                    <mat-form-field>
+                                        <mat-label>Celular</mat-label>
+                                        <input matInput formControlName="celular">
+                                    </mat-form-field>
+                                </div>
+                            <!--  <div class="form-column">
+                                    <mat-form-field>
+                                        <mat-label>Contraseña</mat-label>
+                                        <input matInput formControlName="numeroRuc">
+                                    </mat-form-field>
+                                </div>
+                                <div class="form-column">
+                                    <mat-form-field>
+                                        <mat-label>Repita Contraseña</mat-label>
+                                        <input matInput>
+                                    </mat-form-field>
+                                </div>
+                                -->  
+                               
+                            </div>
+                      <!--  <div class="form-container4">
+
+                              
+
+                            </div>
+                            <div class="form-container3">
+                               
+
+                            </div>
+-->    
+                            <button mat-raised-button color="primary" type="submit">Actualizar</button>
+
+                        </form>
+
+
+
+                    </div>
+
+
+                </div>
+
+            </ng-template>
+        </mat-tab>
+
+        <mat-tab>
+            <ng-template mat-tab-label>
+                <h3>Contraseña</h3>
+            </ng-template>
+            <div class="table2">
+                <div class="Content">
+                    <form [formGroup]="myForm2" (ngSubmit)="onSubmit()">
+                        <div class="form-container3">
+                            <div class="form-column">
+                                <mat-form-field>
+                                    <mat-label>Contraseña actual</mat-label>
+                                    <input matInput formControlName="oldcontrasena">
+                                </mat-form-field>
+                            </div>
+                            <div class="form-column">
+                                <mat-form-field>
+                                    <mat-label>Nueva contraseña</mat-label>
+                                    <input matInput formControlName="newcontrasena">
+                                </mat-form-field>
+                            </div>
+                            <div class="form-column">
+                                <mat-form-field>
+                                    <mat-label>Repita nueva contraseña</mat-label>
+                                    <input matInput formControlName="rnewcontrasena">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                       
+
+                        <button mat-raised-button color="primary" type="submit">Actualizar</button>
+
+                    </form>
+
+
+
+                </div>
+            </div>
+        </mat-tab>
+
+
+    </mat-tab-group>
+</div>

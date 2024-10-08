@@ -1,0 +1,198 @@
+
+
+.DivimgLogin {
+    padding: 01%;
+}
+
+.DivImgRegistre {
+    margin-top: 7%;
+}
+
+.imgRegistre {
+    margin: 5%;
+}
+
+
+
+.custom-tooltip {
+    font-size: 14px;
+    background-color: #333;
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 4px;
+}
+
+.tooltip-icon {
+    margin-left: 10px; /* Para mover el icono más a la derecha */
+}
+
+.marginInput{
+
+    margin-bottom: -2%;
+}
+
+.mat-form-field-login{
+
+    width: 100%; 
+    margin:0.75rem 0.75rem 0 0.75rem ;
+}
+
+.mat-form-field-Recovery{
+
+    width: 95%; 
+    margin:0.75rem ;
+}
+.background-gradient {
+    background: linear-gradient(90deg, rgba(239, 239, 239, 1) 0%, rgba(244, 244, 244, 1) 75%, rgba(239, 239, 239, 1) 100%) !important;
+    padding: 2rem;
+    height: 100vh;
+    /* Cambiado a 100vh */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: auto;
+    box-sizing: border-box;
+
+}
+.container-padre{
+
+    margin:  auto 10%  auto  auto ;
+     max-width: 25%;
+     height: auto;
+     
+}
+
+.card-container {
+
+    border-radius: 1rem;
+    background-color: white;
+    max-width: 100%;
+    overflow: hidden;
+    height: auto;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
+
+}
+
+.card-body {
+    overflow: hidden;
+    height: auto;
+}
+
+.mat-headline {
+
+    font-size: 1.6rem;
+    color: #00C7C4;
+}
+
+.contenedor-button{
+    text-align: center;
+margin-bottom: 20px;
+
+
+}
+.contenedor-button2{
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.custom-button {
+    cursor: pointer;
+    font-size: 1rem;
+    /* Tamaño de fuente */
+    padding: 0.75rem 1.5rem;
+    /* Espaciado interno */
+    border-radius: 0.5rem;
+    /* Bordes redondeados */
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+    width: 90%;
+    background-color: rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, box-shadow 0.3s;
+    /* Transición suave */
+
+}
+
+
+.custom-button2 {
+    cursor: pointer;
+    font-size: 0.75rem;
+    /* Tamaño de fuente */
+    /* Espaciado interno */
+    border-radius: 0.5rem;
+    /* Bordes redondeados */
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+    width: 60%;
+    background-color: rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, box-shadow 0.3s;
+    /* Transición suave */
+
+}
+
+.custom-button:hover , .custom-button2:hover {
+    background-color: var(--primary-color);
+    /* Color de fondo al pasar el mouse */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+    /* Sombra más intensa al pasar el mouse */
+    color: white;
+}
+
+.custom-button:focus {
+    outline: none;
+    /* Elimina el contorno por defecto */
+    box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.3);
+    /* Contorno de enfoque */
+}
+
+mat-form-field {
+    width: 100%;
+    margin-bottom: 1rem;
+
+}
+
+mat-card-content {
+    padding: 1rem;
+}
+
+.ocultarResponsive{
+
+    display:  block;
+}
+
+.ocultarLogoFull{
+
+    display:  none;
+}
+
+@media screen and (min-width: 600px) and (max-width: 1025px) {
+    .container-padre{
+
+         max-width: 100%;
+         
+    }
+    .ocultarResponsive{
+
+        display:  none;
+    }
+
+    .ocultarLogoFull{
+
+        display:  block;
+    }
+    }
+    
+    @media screen and (max-width: 599px) {
+        .container-padre{
+
+             max-width: 100%;
+        }
+        .ocultarResponsive{
+
+            display:  none;
+        }
+        .ocultarLogoFull{
+
+            display:  block;
+        }
+    }

@@ -1,0 +1,142 @@
+.Content {
+    padding: 2% 2% 2% 2%;
+    margin: 1% 5% 5% 5%;
+    background-color: white;
+
+}
+.Content-tabla-dentro{
+    margin: 1% 5% 5% 5%;
+    background-color: white;
+
+}
+.table {
+    border-color: transparent transparent var(--primary-color) transparent;
+    border-style: solid;
+    border-width: 0.5px;
+    border-radius: 5px;
+}
+
+.table2 {
+    border-color: var(--primary-color) var(--primary-color) transparent var(--primary-color);
+    border-style: solid;
+    border-width: 0.5px;
+    border-radius: 5px;
+}
+
+.modal-header {
+    background-color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+
+/* my-form.component.css */
+
+.form-container2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    max-width: 100%;
+    /* Ajusta el ancho al 100% del contenedor */
+    margin: 0 auto;
+    padding: 16px;
+    /* Añade un poco de padding para separación */
+
+}
+
+.form-container3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    max-width: 100%;
+    /* Ajusta el ancho al 100% del contenedor */
+    margin: 0 auto;
+    padding: 16px;
+    /* Añade un poco de padding para separación */
+
+}
+
+.form-container4 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    max-width: 100%;
+    /* Ajusta el ancho al 100% del contenedor */
+    margin: 0 auto;
+    padding: 16px;
+    /* Añade un poco de padding para separación */
+
+}
+
+
+.form-column {
+
+    height: 55px;
+    flex-direction: column;
+
+}
+
+.form-column-2 {
+   
+    height: 55px;
+    grid-column: span 2; /* Hace que este elemento ocupe 2 columnas */
+}
+
+mat-form-field {
+    padding: 0px;
+    width: 100%;
+    /* Asegura que los campos ocupen todo el ancho disponible */
+
+}
+
+
+button {
+    grid-column: span 2;
+    /* El botón ocupa dos columnas */
+    margin-top: 16px;
+    /* Espaciado arriba del botón */
+    width: 100%;
+    max-width: 50%;
+    margin-left: 20%;
+}
+
+h3 {
+    margin: 2%;
+}
+
+
+/* Responsive design for smaller screens */
+@media (max-width: 600px) {
+    .form-container2, .form-container3, .form-container4 {
+
+        grid-template-columns: 1fr;
+        /* Una sola columna en pantallas pequeñas */
+        max-width: 100%;
+        
+        width:100%;
+        
+        /* Asegura que el formulario use todo el ancho disponible */
+    }
+
+    h3 {
+        justify-content: center;
+        text-align: center;
+        margin-top: 5%;
+    }
+
+    button {
+        grid-column: span 1;
+        /* El botón ocupa una columna en pantallas pequeñas */
+        max-width: 65%;
+        margin-left: 0%;
+    }
+
+    mat-form-field {
+        width: 90%;
+        /* Asegura que los campos ocupen todo el ancho disponible */
+    }
+
+
+}
