@@ -67,6 +67,10 @@ export class CrearUsuarioComponent implements OnInit{
     });
     this.ListaUsuarios();
 
+    this.catalogos.refresh$.subscribe(() => {
+      this.ListaUsuarios(); // Método para cargar los datos de la tabla
+    });
+
   }
   
 
@@ -77,7 +81,8 @@ export class CrearUsuarioComponent implements OnInit{
 
       this.dialog.open(AccionesComponent, {
          
-        width: '800px', // Ajusta el tamaño del modal
+        width: '800px',
+       
       });
     } 
    /* if (componente == "FormaPago") {

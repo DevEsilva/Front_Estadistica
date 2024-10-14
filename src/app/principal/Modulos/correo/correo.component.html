@@ -1,0 +1,6 @@
+<form [formGroup]="emailForm" (ngSubmit)="onSubmit()">
+    <input formControlName="to" type="email" placeholder="Para" />
+    <input formControlName="subject" placeholder="Asunto" />
+    <ckeditor formControlName="body"  (ready)="onReady($event)"  [editor]="Editor"></ckeditor>
+    <button type="submit">Enviar</button>
+  </form>

@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { Nino01Component } from './nino01.component';
+import { CorreoComponent } from './correo.component';
 
-describe('Nino01Component', () => {
-  let component: Nino01Component;
-  let fixture: ComponentFixture<Nino01Component>;
+describe('CorreoComponent', () => {
+  let component: CorreoComponent;
+  let fixture: ComponentFixture<CorreoComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [Nino01Component]
+      declarations: [CorreoComponent]
     });
-    fixture = TestBed.createComponent(Nino01Component);
+    fixture = TestBed.createComponent(CorreoComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

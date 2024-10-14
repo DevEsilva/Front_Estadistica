@@ -7,6 +7,7 @@ import { Datos } from '../Models/Datos';
 import { Sexos } from '../Models/Sexos';
 import { Cargos } from '../Models/Cargos';
 import { Subject } from 'rxjs';
+import { Tableros } from '../Models/Tableros';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +17,8 @@ import { Subject } from 'rxjs';
 export class CatalogosService {
   authURL = environment.apiUrl;
   private refreshSubject = new Subject<void>(); // Sujeto para manejar el refresco
+  refresh$ = this.refreshSubject.asObservable();
+
 
   constructor(private httpClient: HttpClient) { }
 
@@ -41,6 +44,15 @@ export class CatalogosService {
 
   public Usuarios() {
     return this.httpClient.get<Datos[]>(`${this.authURL}catalogos/listaUsuarios`);
+
+  }
+
+  public Tableros() {
+    return this.httpClient.get<Tableros[]>(`${this.authURL}catalogos/listaTableros`);
+
+  }
+  public Tablero(nombre:string) {
+    return this.httpClient.get<Tableros>(`${this.authURL}catalogos/tablero`+"/"+nombre);
 
   }
 

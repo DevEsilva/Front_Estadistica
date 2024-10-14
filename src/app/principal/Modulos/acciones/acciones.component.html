@@ -24,7 +24,7 @@
     </div>
     <div class="conten-table">
         <span class="colum-content-rigth">Rol :</span>
-        <select class="colum-content-left"  [(ngModel)]="rol">
+        <select class="colum-content-left" [(ngModel)]="rol">
             <option *ngFor="let option of roles" [value]="option.codigo">{{ option.descripcion }}</option>
         </select>
     </div>
@@ -36,14 +36,14 @@
     </div>
     <div class="conten-table">
         <span class="colum-content-rigth">Sede :</span>
-        <select class="colum-content-left"  [(ngModel)]="establecimiento">
+        <select class="colum-content-left" [(ngModel)]="establecimiento">
             <option *ngFor="let option of establecimientos" [value]="option.codigo">{{ option.establecimiento }}
             </option>
         </select>
     </div>
     <div class="conten-table">
         <span class="colum-content-rigth">Sexo :</span>
-        <select class="colum-content-left"  [(ngModel)]="sexo">
+        <select class="colum-content-left" [(ngModel)]="sexo">
             <option *ngFor="let option of sexos" [value]="option.codigo">{{ option.descripcion }}</option>
         </select>
     </div>
@@ -52,15 +52,35 @@
     <div class="conten-btn">
         <button mat-raised-button color="primary" (click)="actualizar()">
             <mat-icon>picture_as_pdf</mat-icon><span>Editar</span></button>
-        <button mat-raised-button color="primary">
-            <mat-icon>outgoing_mail</mat-icon><span>CORREO</span></button>
-        <button mat-raised-button color="primary">
+      <!--  <button mat-raised-button color="primary"  (click)="ActivarBtnCorreo()">
+            <mat-icon>outgoing_mail</mat-icon><span>CORREO</span></button>-->
+        <button mat-raised-button color="primary" (click)="ActivarBtnHistorial()">
             <mat-icon>history_toggle_off</mat-icon><span>HISTORIAL</span></button>
     </div>
 
 
-    <mat-divider></mat-divider>
 
+
+
+    <ng-container *ngIf="btnHistorial" >
+        <ng-template #contentTemplate>
+            <mat-divider></mat-divider>
+            <br>
+            <app-historialpor-user [user]="usuario" ></app-historialpor-user>
+        </ng-template>
+
+        <ng-container *ngTemplateOutlet="contentTemplate"></ng-container>
+    </ng-container>
+
+    <ng-container *ngIf="btnCorreo" >
+        <ng-template #contentTemplate>
+            <mat-divider></mat-divider>
+            <br>
+            <app-correo></app-correo>
+        </ng-template>
+
+        <ng-container *ngTemplateOutlet="contentTemplate"></ng-container>
+    </ng-container>
 
 
 </div>

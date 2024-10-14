@@ -8,7 +8,7 @@ import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { DashComponent } from './principal/dash/dash.component';
-import { AnemiaComponent } from './principal/anemia/anemia.component';
+import { AnemiaComponent } from './principal/Tableros/Tableros.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -38,7 +38,6 @@ import { SoporteCallComponent } from './principal/Modulos/soporte-call/soporte-c
 import { interceptorProvider } from './principal/interceptors/prod-interceptor.service';
 import { interceptorProviderSpinner } from './principal/interceptors/SpinnerInterceptor.service';
 import { AuthService } from './principal/Servicios/auth.service';
-import { Nino01Component } from './principal/nino01/nino01.component';
 import { VacunometroComponent } from './principal/vacunometro/vacunometro.component';
 import { CrearUsuarioComponent } from './principal/Usuarios/crear-usuario.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
@@ -46,6 +45,11 @@ import { MatPaginatorIntl, MatPaginatorModule } from '@angular/material/paginato
 import {MAT_DATE_FORMATS, MAT_DATE_LOCALE, MatNativeDateModule} from '@angular/material/core';
 import { MatTableModule } from '@angular/material/table';
 import { AccionesComponent } from './principal/Modulos/acciones/acciones.component';
+import { ConfirmDialogComponent } from './principal/Modulos/confirm-dialog/confirm-dialog.component';
+import { HistorialporUserComponent } from './principal/Modulos/historialpor-user/historialpor-user.component';
+import { CorreoComponent } from './principal/Modulos/correo/correo.component';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+import { TableroscrudComponent } from './principal/Modulos/tableroscrud/tableroscrud.component';
 
 
 @NgModule({
@@ -60,12 +64,16 @@ import { AccionesComponent } from './principal/Modulos/acciones/acciones.compone
     PerfilComponent,
     RecoveryAccComponent,
     SoporteCallComponent,
-    Nino01Component,
     VacunometroComponent,
     CrearUsuarioComponent,
-    AccionesComponent
+    AccionesComponent,
+    ConfirmDialogComponent,
+    HistorialporUserComponent,
+    CorreoComponent,
+    TableroscrudComponent
   ],
   imports: [
+    CKEditorModule,
     BrowserModule,
     AppRoutingModule,
     MatCardModule,

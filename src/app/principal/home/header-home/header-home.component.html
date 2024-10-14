@@ -10,8 +10,8 @@
 <mat-nav-list>
    
     
-    <a mat-list-item class="menu-item" *ngFor="let item of menuItems()" [routerLink]="item.route"
-        routerLinkActive="selected-menu-item" (click)="onMenuItemClick2()" #rla="routerLinkActive"
+    <a mat-list-item class="menu-item" *ngFor="let item of menuItems()" [routerLink]="[item.route, item.label]"
+        routerLinkActive="selected-menu-item" (click)="onMenuItemClick2(item.label)" #rla="routerLinkActive"
         [activated]="rla.isActive">
         <mat-icon [fontSet]="rla.isActive ? 'material-icons' : 'material-icons-outlined' "
             matListItemIcon>{{item.icon}}</mat-icon>

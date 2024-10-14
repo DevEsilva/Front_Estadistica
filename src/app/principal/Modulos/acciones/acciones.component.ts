@@ -1,5 +1,5 @@
 import { AfterViewChecked, ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { AccionesService } from '../../Servicios/acciones.service';
 import { CatalogosService } from '../../Servicios/catalogos.service';
 import { Cargos } from '../../Models/Cargos';
@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 import { UsersService } from '../../Servicios/users.service';
 import { EditUsuario } from '../../Models/EditUsuario';
 import { ToastrService } from 'ngx-toastr';
+import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'app-acciones',
@@ -18,7 +19,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class AccionesComponent implements OnInit, AfterViewChecked {
 
-  constructor(private toastr: ToastrService, private usersServices: UsersService, private cdr: ChangeDetectorRef, public dialogRef: MatDialogRef<AccionesComponent>, private accionesService: AccionesService, private catalogos: CatalogosService, private router: Router
+  constructor(private toastr: ToastrService, private usersServices: UsersService, private dialog: MatDialog, private cdr: ChangeDetectorRef, public dialogRef: MatDialogRef<AccionesComponent>, private accionesService: AccionesService, private catalogos: CatalogosService, private router: Router
   ) {
 
   }
@@ -31,6 +32,8 @@ export class AccionesComponent implements OnInit, AfterViewChecked {
   public sexo: string | undefined;
   public correo!: string;
 
+  public btnHistorial = false;
+  public btnCorreo = false;
 
   datosEditados: EditUsuario = {
     nombre: '',
@@ -43,7 +46,7 @@ export class AccionesComponent implements OnInit, AfterViewChecked {
     celular: ''
   };
   ngAfterViewChecked(): void {
- 
+
     this.cdr.detectChanges();
   }
 
@@ -63,9 +66,19 @@ export class AccionesComponent implements OnInit, AfterViewChecked {
     this.usuario = this.accionesService.getDocumento().usuario;
     this.correo = this.accionesService.getDocumento().email;
     this.celular = this.accionesService.getDocumento().celular;
-
   }
 
+  ActivarBtnHistorial() {
+    this.btnHistorial =   !this.btnHistorial;
+    if(this.btnHistorial){this.btnCorreo = false;}
+    
+  }
+
+  ActivarBtnCorreo() {
+    this.btnCorreo =   !this.btnCorreo;
+    if(this.btnCorreo){this.btnHistorial = false;}
+
+  }
 
   Cargos() {
     this.catalogos.Cargos().subscribe(
@@ -153,32 +166,36 @@ export class AccionesComponent implements OnInit, AfterViewChecked {
 
   actualizar() {
 
-    this.datosEditados.cargo = this.cargo || "";
-    this.datosEditados.celular = this.celular || "";
-    this.datosEditados.email = this.correo || "";
-    this.datosEditados.establecimiento = this.establecimiento || "";
-    this.datosEditados.nombre = this.nombre || "";
-    this.datosEditados.rol = this.rol || "";
-    this.datosEditados.sexo = this.sexo || "";
-    this.datosEditados.usuario = this.usuario || "";
+    const dialogRef = this.dialog.open(ConfirmDialogComponent);
 
-    console.log(this.datosEditados);
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.datosEditados.cargo = this.cargo || "";
+        this.datosEditados.celular = this.celular || "";
+        this.datosEditados.email = this.correo || "";
+        this.datosEditados.establecimiento = this.establecimiento || "";
+        this.datosEditados.nombre = this.nombre || "";
+        this.datosEditados.rol = this.rol || "";
+        this.datosEditados.sexo = this.sexo || "";
+        this.datosEditados.usuario = this.usuario || "";
 
+        this.usersServices.edit(this.datosEditados).subscribe(
+          (data) => {
+            this.toastr.success(data.mensaje, data.descripcion, {
+              timeOut: 3000, positionClass: 'toast-top-center'
+            });
+            this.close();
+            this.catalogos.refreshData();
+          },
+          (error) => {
+            this.toastr.error(error.mensaje, error.descripcion, {
+              timeOut: 3000, positionClass: 'toast-top-center'
+            });
+          }
+        );
 
-    this.usersServices.edit(this.datosEditados).subscribe(
-      (data) => {
-        this.toastr.success(data.mensaje, data.descripcion, {
-          timeOut: 3000, positionClass: 'toast-top-center'
-        });
-      },
-      (error) => {
-        this.toastr.error(error.mensaje, error.descripcion, {
-          timeOut: 3000, positionClass: 'toast-top-center'
-        });
       }
-    );
-
-    this.catalogos.refreshData();
+    });
 
   }
 }

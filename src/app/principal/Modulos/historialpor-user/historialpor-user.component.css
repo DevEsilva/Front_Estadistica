@@ -1,0 +1,39 @@
+.table-responsive {
+    width: 100%;
+
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    /* Para soporte de desplazamiento suave en iOS */
+}
+
+
+table {
+    width: 100%;
+
+}
+
+.mat-header-cell {
+    position: sticky;   
+    top: 0;                    /* Posiciona el encabezado en la parte superior */
+    z-index: 1;    
+    background-color: var(--primary-color) !important;
+    /* Cambia este color al que desees */
+    color: white;
+
+}
+
+.id{
+
+    width: 22%;
+}
+
+.mat-mdc-form-field {
+    font-size: 0.7rem;
+    width: 100%;
+}
+
+.table-container {
+    max-height: 30vh; /* Ajusta la altura según tus necesidades */
+    overflow-y: auto;  /* Permite el scroll vertical */
+    display: block;     /* Asegura que el contenedor se comporte como un bloque */
+}
