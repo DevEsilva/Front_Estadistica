@@ -8,6 +8,7 @@ import { Sexos } from '../Models/Sexos';
 import { Cargos } from '../Models/Cargos';
 import { Subject } from 'rxjs';
 import { Tableros } from '../Models/Tableros';
+import { Mensaje } from '../Models/Mensaje';
 
 @Injectable({
   providedIn: 'root'
@@ -53,6 +54,11 @@ export class CatalogosService {
   }
   public Tablero(nombre:string) {
     return this.httpClient.get<Tableros>(`${this.authURL}catalogos/tablero`+"/"+nombre);
+
+  }
+
+  public EdicionTablero(tablero:Tableros): Observable<Mensaje> {
+    return this.httpClient.post<Mensaje>(`${this.authURL}catalogos/editTablero`,tablero);
 
   }
 

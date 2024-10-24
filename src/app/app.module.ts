@@ -50,6 +50,7 @@ import { HistorialporUserComponent } from './principal/Modulos/historialpor-user
 import { CorreoComponent } from './principal/Modulos/correo/correo.component';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { TableroscrudComponent } from './principal/Modulos/tableroscrud/tableroscrud.component';
+import { AccionestablerosComponent } from './principal/Tableros/accionestableros/accionestableros.component';
 
 
 @NgModule({
@@ -70,7 +71,8 @@ import { TableroscrudComponent } from './principal/Modulos/tableroscrud/tableros
     ConfirmDialogComponent,
     HistorialporUserComponent,
     CorreoComponent,
-    TableroscrudComponent
+    TableroscrudComponent,
+    AccionestablerosComponent
   ],
   imports: [
     CKEditorModule,

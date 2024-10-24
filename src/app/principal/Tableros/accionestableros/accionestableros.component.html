@@ -1,0 +1,65 @@
+<div class="modal-header ">
+    <h1 mat-dialog-title><mat-icon fontIcon="settings" style="margin-bottom: -5px;"></mat-icon> Acciones</h1>
+    <button mat-icon-button class="close-button" aria-label="Cerrar" (click)="close()">
+        <mat-icon fontIcon="cancel"></mat-icon>
+    </button>
+
+</div>
+<div class="Content">
+    <div class="conten-table">
+        <span class="colum-content-rigth">Tabla :</span>
+        <span class="colum-content-left">{{nombretablero}}</span>
+    </div>
+    <div class="conten-table">
+        <span class="colum-content-rigth"> URL Power BI:</span>
+        <input type="text" class="colum-content-left" [(ngModel)]="urlpwb">
+    </div>
+    <div class="conten-table">
+        <span class="colum-content-rigth">Descarga :</span>
+        <input type="text" class="colum-content-left" [(ngModel)]="nombredescarga">
+    </div>
+    <div class="conten-table">
+        <span class="colum-content-rigth">URL Descarga :</span>
+        <input type="text" class="colum-content-left" [(ngModel)]="urldescarga">
+    </div>
+    <div class="conten-table">
+        <span class="colum-content-rigth">Tamaño :</span>
+        <input type="number" class="colum-content-left" [(ngModel)]="pixelesAlto">
+    </div>
+    <br>
+    <mat-divider></mat-divider>
+    <div class="conten-btn">
+        <button mat-raised-button color="primary" (click)="actualizar()">
+            <mat-icon>picture_as_pdf</mat-icon><span>Editar</span></button>
+      <!--  <button mat-raised-button color="primary"  (click)="ActivarBtnCorreo()">
+            <mat-icon>outgoing_mail</mat-icon><span>CORREO</span></button>-->
+        <button mat-raised-button color="primary" (click)="ActivarBtnHistorial()">
+            <mat-icon>history_toggle_off</mat-icon><span>HISTORIAL</span></button>
+    </div>
+
+
+
+
+
+    <ng-container *ngIf="btnHistorial" >
+        <ng-template #contentTemplate>
+            <mat-divider></mat-divider>
+            <br>
+            <app-historialpor-user ></app-historialpor-user>
+        </ng-template>
+
+        <ng-container *ngTemplateOutlet="contentTemplate"></ng-container>
+    </ng-container>
+
+    <ng-container *ngIf="btnCorreo" >
+        <ng-template #contentTemplate>
+            <mat-divider></mat-divider>
+            <br>
+            <app-correo></app-correo>
+        </ng-template>
+
+        <ng-container *ngTemplateOutlet="contentTemplate"></ng-container>
+    </ng-container>
+
+
+</div>
